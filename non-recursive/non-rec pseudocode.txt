@@ -1,0 +1,52 @@
+Algorithm insertionSort(a, n)
+{
+    For i := 1 to n - 1 step 1 do
+    {
+        key := a[i];
+        j := i - 1;
+
+        While (j >= 0 AND a[j] > key) do
+        {
+            a[j + 1] := a[j];
+            j := j - 1;
+        }
+        a[j + 1] := key;
+    }
+}
+
+Algorithm triangle(a, n)
+{
+    insertionSort(a, n);
+
+    For i := 0 to n - 3 step 1 do
+    {
+        If (a[i] + a[i + 1] > a[i + 2]) then
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+Algorithm main()
+{
+    write("Enter size of the array: ");
+    read(n);
+
+    If (n < 3) then
+    {
+        write("Cannot be a triangle.");
+    }
+    Else
+    {
+        write("Enter array to check for triplets: ");
+
+        For i := 0 to n - 1 step 1 do
+        {
+            read(a[i]);
+        }
+        result := triangle(a, n);
+        write(result);
+    }
+}
